@@ -1,0 +1,51 @@
+#content {
+	display: none;
+}
+
+main {
+	max-width: 700px;
+	margin: auto;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.menubar {
+	border: 1px solid #d3d3d3;
+	padding: 5px;
+}
+
+.menuicon {
+	padding: 5px;
+	cursor: pointer;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+section section {
+	padding-left: 20px;
+}
+
+section section section {
+	padding-left: 40px;
+}
+
+section section section section {
+	padding-left: 60px;
+}
+
+h2 {
+	font-size: 24px;
+}
+
+section section h2 {
+	font-size: 22px;
+}
+
+section section section h2 {
+	font-size: 20px;
+}

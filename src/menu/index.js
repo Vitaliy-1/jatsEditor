@@ -1,6 +1,7 @@
 import {Plugin} from "prosemirror-state";
 import {toggleMark, setBlockType, wrapIn} from "prosemirror-commands";
 import {schema} from "../schema";
+import {wrapInList} from "../newCommands";
 
 class MenuView {
 	constructor(items, editorView) {
@@ -61,9 +62,12 @@ function fontawesomewLabel(iconClass, name) {
 }
 
 export let menu = menuPlugin([
-	{command: toggleMark(schema.marks.italic), dom: fontawesomewLabel("fas fa-italic", "italic")},
-	{command: toggleMark(schema.marks.bold), dom: fontawesomewLabel("fas fa-bold", "bold")},
+	{command: toggleMark(schema.marks.italic), dom: textLabel("i", "italic")},
+	{command: toggleMark(schema.marks.bold), dom: textLabel("b", "bold")},
 	{command: wrapIn(schema.nodes.sec), dom: textLabel("sec", "wrap content into section")},
+	{command: wrapInList(schema.nodes.uList), dom: fontawesomewLabel("fas fa-list", "unordered list")},
+	{command: wrapInList(schema.nodes.oList), dom: fontawesomewLabel("fas fa-list-ol", "ordered list")},
 	{command: setBlockType(schema.nodes.title), dom: textLabel("title", "title")},
 	{command: setBlockType(schema.nodes.par), dom: fontawesomewLabel("fas fa-paragraph", "paragraph")},
+	{command: wrapIn(schema.nodes.dispQuote), dom: fontawesomewLabel("fas fa-quote-right", "blockquote")}
 ]);

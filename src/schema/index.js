@@ -7,16 +7,30 @@ const nodes = {
 	
 	body: {
 		group: "block",
-		content: "(sec | par | ulist)+",
+		content: "(sec | uList | oList | par | dispQuote)+",
 		parseDOM: [{tag: "body"}],
 		toDOM() {return ["div", 0]}
 	},
 	
 	sec: {
 		group: "block",
-		content: "(sec | par | title | ulist)+",
+		content: "(sec | uList | oList | par | title | dispQuote)+",
 		parseDOM: [{tag: "sec"}],
 		toDOM() {return ["section", 0]}
+	},
+	
+	uList: {
+		group: "block",
+		content: "listItem+",
+		parseDOM: [{tag: "list[list-type=unordered]"}],
+		toDOM() { return ["ul", 0]}
+	},
+	
+	oList: {
+		group: "block",
+		content: "listItem+",
+		parseDOM: [{tag: "list[list-type=ordered]"}],
+		toDOM() {return ["ol", 0]}
 	},
 	
 	par: {
@@ -33,19 +47,19 @@ const nodes = {
 		toDOM() {return ["h2", 0]}
 	},
 	
-	ulist: {
-		group: "block",
-		content: "listItem+",
-		parseDOM: [{tag: "list"}],
-		toDOM() { return ["ul", 0]}
-	},
-	
 	listItem: {
 		group: "block",
-		content: "inline*",
+		content: "par",
 		parseDOM: [{ tag: "list-item"}],
 		toDOM() { return ["li", 0]}
 		
+	},
+	
+	dispQuote: {
+		group: "block",
+		content: "par+",
+		parseDOM: [{tag: "disp-quote"}],
+		toDOM() {return ["blockquote", 0]}
 	},
 	
 	text: {

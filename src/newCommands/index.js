@@ -2,6 +2,7 @@
 import {Fragment, NodeRange, Slice} from "prosemirror-model";
 import {canSplit, findWrapping, ReplaceAroundStep} from "prosemirror-transform";
 
+// Add list item and wrap it into the list of correspondent type
 export function wrapInList(listType) {
 	return function(state, dispatch) {
 		let {$from, $to} = state.selection;
@@ -46,6 +47,8 @@ function doWrapInList(tr, range, wrappers, joinBefore, listType) {
 	}
 	return tr
 }
+
+// Splits list item to create a new one -> bind to Enter
 
 export function splitListItem(itemType) {
 	return function(state, dispatch) {

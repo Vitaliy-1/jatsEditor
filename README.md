@@ -8,7 +8,7 @@ This is an example of bundled ProseMirror core modules with modified schema for 
 ## Documentation
 All core and non-core modules are tied together in `src/index.js`, which starts the editor. In this example [Parcel](https://parceljs.org/) is used a a bundler. 
 ### Schema
-For a minimalistic editor to work what is needed is only schema (`src/schema/index.js`), which parses given XML and produces HTML elements. JATS XML input is child of a `div#content` [element](https://github.com/Vitaliy-1/jatsEditor/blob/e6f35ecc4d5c292f81a867af3f3a5505f4518281/index.html#L14) (that is against HTML5 validation rules).
+For a minimalistic editor to work what is needed is only schema (`src/schema/index.js`), which parses given XML and produces HTML elements. JATS XML input is child of a `script#content` [element](https://github.com/Vitaliy-1/jatsEditor/blob/58eac2d396e8bd07b42a7a5e98e50edc1d5b9690/index.html#L14).
 Adding elements into a schema is as simple as:
 ```
 body: {

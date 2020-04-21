@@ -14,7 +14,6 @@ let xmlDOM = xmlParser.parseFromString(contentEl.innerHTML, "application/xml");
 
 // Initialize ProseMirror modules
 let editorEl = document.getElementById("editor");
-//let contentEl = document.getElementById("content");
 
 let doc = DOMParserPM.fromSchema(schema).parse(xmlDOM);
 

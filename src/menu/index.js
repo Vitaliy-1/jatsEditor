@@ -69,5 +69,5 @@ export let menu = menuPlugin([
 	{command: wrapInList(schema.nodes.oList), dom: fontawesomewLabel("fas fa-list-ol", "ordered list")},
 	{command: setBlockType(schema.nodes.title), dom: textLabel("title", "title")},
 	{command: setBlockType(schema.nodes.par), dom: fontawesomewLabel("fas fa-paragraph", "paragraph")},
-	{command: wrapIn(schema.nodes.dispQuote), dom: fontawesomewLabel("fas fa-quote-right", "blockquote")}
+	{command: wrapIn(schema.nodes.dispQuote), dom: fontawesomewLabel("fas fa-quote-right", "blockquote")},
 ]);

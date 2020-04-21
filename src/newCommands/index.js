@@ -84,3 +84,9 @@ export function splitListItem(itemType) {
 		return true
 	}
 }
+
+export function addNewElement(itemType) {
+	return function(state, dispatch) {
+		// TODO write a function to add a new element (table) starting from a new line
+	}
+}

@@ -1,20 +1,21 @@
-import {Schema} from "prosemirror-model"
+import {Schema} from "prosemirror-model";
+import {tableNodes} from "prosemirror-tables";
 
-const nodes = {
+let nodes = {
 	doc: {
 		content: "body"
 	},
 	
 	body: {
 		group: "block",
-		content: "(sec | uList | oList | par | dispQuote)+",
+		content: "(sec | uList | oList | par | dispQuote | table)+",
 		parseDOM: [{tag: "body"}],
 		toDOM() {return ["div", 0]}
 	},
 	
 	sec: {
 		group: "block",
-		content: "(sec | uList | oList | par | title | dispQuote)+",
+		content: "(sec | uList | oList | par | title | dispQuote | table)+",
 		parseDOM: [{tag: "sec"}],
 		toDOM() {return ["section", 0]}
 	},
@@ -67,7 +68,22 @@ const nodes = {
 	}
 };
 
-const marks = {
+// Integrating tables
+let options = {
+	tableGroup: "block",
+	cellContent: "block+",
+	cellAttributes: {
+		background: {
+			default: null,
+			getFromDOM(dom) { return dom.style.backgroundColor || null },
+			setDOMAttr(value, attrs) { if (value) attrs.style = (attrs.style || "") + `background-color: ${value};` }
+		}
+	}
+};
+
+nodes = Object.assign({}, nodes, tableNodes(options)); // add new nodes to schema
+
+let marks = {
 	italic: {
 		parseDOM: [{tag: "italic"}],
 		toDOM() {return ["em", 0]}
